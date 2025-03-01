@@ -1,13 +1,18 @@
-[gd_scene load_steps=22 format=3 uid="uid://b8bdlbqat60ox"]
+[gd_scene load_steps=24 format=3 uid="uid://b8bdlbqat60ox"]
 
 [ext_resource type="Texture2D" uid="uid://c5brk3qamn8rt" path="res://sprites/bonequinhos/2 - Lil Wiz/Idle_(32 x 32).png" id="1_bw07t"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_dgly5"]
 [ext_resource type="Texture2D" uid="uid://pxiif6xj0nh7" path="res://sprites/bonequinhos/2 - Lil Wiz/Falling_(32 x 32).png" id="2_0mghc"]
+[ext_resource type="Texture2D" uid="uid://bjnu76j2rm5b2" path="res://sprites/bonequinhos/2 - Lil Wiz/Ducking_(32 x 32).png" id="2_7nxnr"]
 [ext_resource type="Texture2D" uid="uid://c3dn3hfwptcwe" path="res://sprites/bonequinhos/2 - Lil Wiz/Running_(32 x 32).png" id="3_kvlp4"]
 [ext_resource type="Texture2D" uid="uid://cqd8usn0dave7" path="res://sprites/bonequinhos/2 - Lil Wiz/Jumping_(32 x 32).png" id="4_o1txm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kx740"]
 size = Vector2(14, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_so3uf"]
+atlas = ExtResource("2_7nxnr")
+region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kq5tx"]
 atlas = ExtResource("2_0mghc")
@@ -67,6 +72,14 @@ region = Rect2(160, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4kfqs"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_so3uf")
+}],
+"loop": true,
+"name": &"crouch",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_kq5tx")
@@ -140,5 +153,19 @@ shape = SubResource("RectangleShape2D_kx740")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_4kfqs")
-animation = &"jump"
-frame_progress = 0.0429411
+animation = &"walk"
+
+[node name="playerCamera" type="Camera2D" parent="."]
+limit_left = -64
+limit_top = -500
+limit_right = 1000
+limit_bottom = 360
+limit_smoothed = true
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.3
+drag_right_margin = 0.3
+editor_draw_limits = true
+editor_draw_drag_margin = true
