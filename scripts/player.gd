@@ -3,7 +3,7 @@ extends CharacterBody2D
 @onready var playerAnim: AnimatedSprite2D = $AnimatedSprite2D
 
 const SPEED = 150.0
-const JUMP_VELOCITY = -500.0
+const JUMP_VELOCITY = -300.0
 
 
 func _physics_process(delta: float) -> void:
@@ -17,6 +17,8 @@ func _physics_process(delta: float) -> void:
 	else: 
 		if velocity.x != 0:
 			playerAnim.play('walk')
+		elif velocity.x == 0 && Input.is_action_pressed("crouch"):
+			playerAnim.play('crouch')
 		else:
 			playerAnim.play('idle')
 
