@@ -186,8 +186,10 @@ limit_left = -5
 limit_bottom = 200
 position_smoothing_enabled = true
 
-[node name="DeathZone" parent="." groups=["deathzone"] instance=ExtResource("13_o3kau")]
+[node name="DeathZone" parent="." instance=ExtResource("13_o3kau")]
 position = Vector2(-38, 212)
 
-[node name="FinishZone" parent="." groups=["endzone"] instance=ExtResource("14_g24r1")]
+[node name="FinishZone" parent="." instance=ExtResource("14_g24r1")]
 position = Vector2(1055, -18)
+
+[connection signal="area_entered" from="FinishZone" to="Player" method="_on_finish_zone_area_entered"]

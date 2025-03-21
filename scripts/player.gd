@@ -5,6 +5,10 @@ extends CharacterBody2D
 const SPEED = 150.0
 const JUMP_VELOCITY = -300.0
 
+@export var max_jump_count = 2
+
+var jump_count = 0
+
 func _physics_process(delta: float) -> void:
 	
 	# Add the gravity.
@@ -14,7 +18,8 @@ func _physics_process(delta: float) -> void:
 			playerAnim.play('jump')
 		elif velocity.y > 0:
 			playerAnim.play('fall')
-	else: 
+	else:
+		jump_count = 0
 		if velocity.x != 0:
 			playerAnim.play('walk')
 		elif velocity.x == 0 && Input.is_action_pressed("crouch"):
@@ -23,7 +28,8 @@ func _physics_process(delta: float) -> void:
 			playerAnim.play('idle')
 
 	# Handle jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor():
+	if Input.is_action_just_pressed("jump") and jump_count < max_jump_count:
+		jump_count += 1
 		velocity.y = JUMP_VELOCITY
 
 	# Get the input direction and handle the movement/deceleration.
@@ -40,3 +46,9 @@ func _physics_process(delta: float) -> void:
 		playerAnim.flip_h = direction
 
 	move_and_slide()
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	if area.is_in_group("deathzone"):
+		get_tree().reload_current_scene()
+	elif area.is_in_group("endzone"):
+		get_tree().change_scene_to_file("res://scenes/floresta.tscn")

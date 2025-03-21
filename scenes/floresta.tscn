@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://bes10lu6py4n2"]
+[gd_scene load_steps=11 format=4 uid="uid://bes10lu6py4n2"]
 
 [ext_resource type="PackedScene" uid="uid://b8bdlbqat60ox" path="res://entities/player.tscn" id="1_ks5qr"]
 [ext_resource type="TileSet" uid="uid://chcibd33wvoi2" path="res://tiles/terrain.tres" id="2_54ym5"]
@@ -8,6 +8,10 @@
 [ext_resource type="Texture2D" uid="uid://ciolhai5c7pgi" path="res://sprites/cenarios/2 - Autumn Forest/Background parts/3 - Bottom_leaf_piles.png" id="6_6m8ar"]
 [ext_resource type="Texture2D" uid="uid://eb2bkfqocla5" path="res://sprites/cenarios/2 - Autumn Forest/Background parts/2 - Trees.png" id="7_7pj11"]
 [ext_resource type="Texture2D" uid="uid://cfxep6swchaq2" path="res://sprites/cenarios/2 - Autumn Forest/Background parts/1 - Leaf_top.png" id="8_t537h"]
+[ext_resource type="PackedScene" uid="uid://2bmd6a28uxye" path="res://entities/camera.tscn" id="9_6m8ar"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6m8ar"]
+size = Vector2(20, 251)
 
 [node name="Floresta" type="Node2D"]
 
@@ -67,3 +71,23 @@ motion_mirroring = Vector2(288, 0)
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Leaf_top"]
 texture = ExtResource("8_t537h")
 centered = false
+
+[node name="Camera" parent="." instance=ExtResource("9_6m8ar")]
+position = Vector2(854, 120)
+limit_left = -5
+limit_top = 0
+limit_right = 900
+limit_bottom = 200
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 115.5)
+shape = SubResource("RectangleShape2D_6m8ar")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(911, -29)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(0, 115.5)
+shape = SubResource("RectangleShape2D_6m8ar")
