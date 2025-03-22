@@ -40,3 +40,10 @@ func _physics_process(delta: float) -> void:
 		playerAnim.flip_h = direction
 
 	move_and_slide()
+
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	if area.is_in_group("DeathZones"):
+		get_tree().reload_current_scene()
+	elif area.is_in_group("EndZones"):
+		get_tree().change_scene_to_file("res://scenes/forest.tscn")

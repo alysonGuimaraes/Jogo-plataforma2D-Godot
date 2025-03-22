@@ -11,16 +11,21 @@ config_version=5
 [application]
 
 config/name="platformer2D"
-run/main_scene="res://scenes/game.tscn"
-config/features=PackedStringArray("4.3", "Mobile")
+run/main_scene="uid://fqosr4p2tnk"
+config/features=PackedStringArray("4.4", "Mobile")
 config/icon="res://icon.svg"
 
 [display]
 
 window/size/viewport_width=400
-window/size/viewport_height=300
+window/size/viewport_height=240
 window/size/mode=2
 window/stretch/mode="canvas_items"
+
+[global_group]
+
+Players=""
+DeathZones=""
 
 [input]
 
