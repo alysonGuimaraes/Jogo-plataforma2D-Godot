@@ -5,7 +5,6 @@ extends CharacterBody2D
 const SPEED = 150.0
 const JUMP_VELOCITY = -300.0
 
-
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
@@ -40,7 +39,6 @@ func _physics_process(delta: float) -> void:
 		playerAnim.flip_h = direction
 
 	move_and_slide()
-
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("DeathZones"):
