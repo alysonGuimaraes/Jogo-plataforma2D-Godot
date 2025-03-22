@@ -1,0 +1,15 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://cxt8qbbtsv0hb"]
+
+[ext_resource type="Texture2D" uid="uid://byx28v8kd0fty" path="res://sprites/cenarios/5 - Misc. universal tiles/Water_frames (16 x 32).png" id="1_5swia"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kvuet"]
+texture = ExtResource("1_5swia")
+0:0/animation_columns = 2
+0:0/animation_separation = Vector2i(0, 1)
+0:0/animation_frame_0/duration = 1.0
+0:0/animation_frame_1/duration = 1.0
+0:0/0 = 0
+0:1/0 = 0
+
+[resource]
+sources/0 = SubResource("TileSetAtlasSource_kvuet")
