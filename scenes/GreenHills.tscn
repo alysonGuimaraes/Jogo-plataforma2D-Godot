@@ -181,11 +181,11 @@ size = Vector2(26, 80)
 position = Vector2(48, 224)
 
 [node name="PlayerCamera" parent="." instance=ExtResource("2_l57up")]
-position = Vector2(176, 128)
+position = Vector2(130, 125)
 process_callback = 0
 limit_left = -10
 limit_top = -100
-limit_right = 1600
+limit_right = 1200
 limit_bottom = 270
 limit_smoothed = true
 position_smoothing_enabled = true
@@ -287,3 +287,4 @@ position = Vector2(208, 272)
 
 [node name="EndZone" parent="." groups=["EndZones"] instance=ExtResource("17_n3jg2")]
 position = Vector2(1184, 208)
+next_level = "forest"

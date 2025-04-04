@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://fqosr4p2tnk"]
+[gd_scene load_steps=20 format=4 uid="uid://fqosr4p2tnk"]
 
 [ext_resource type="TileSet" uid="uid://b35nofvbiwy6a" path="res://tiles/terrain.tres" id="1_xijx7"]
 [ext_resource type="Texture2D" uid="uid://djloedo8e0jte" path="res://sprites/cenarios/2 - Autumn Forest/Background parts/6 - Distant_trees.png" id="2_i1yi8"]
@@ -13,6 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://deoo44q6ywovk" path="res://sprites/cenarios/Cave Tileset/Brown_Tile_Terrain (16 x 16).png" id="11_dabdc"]
 [ext_resource type="Texture2D" uid="uid://bjl8n4480ehl4" path="res://sprites/cenarios/Cave Tileset/Gray_Tile_Terrain (16 x 16).png" id="12_cf55d"]
 [ext_resource type="Texture2D" uid="uid://bnjwivqi6ovab" path="res://sprites/cenarios/Cave Tileset/Scaffolding_and_BG_Parts (16 x 16).png" id="13_di0nb"]
+[ext_resource type="PackedScene" uid="uid://c7tcvw5usti2x" path="res://entities/change_scene.tscn" id="14_di0nb"]
+[ext_resource type="PackedScene" uid="uid://gh5uvi4b0rto" path="res://entities/end_zone.tscn" id="15_pyn53"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pyn53"]
 texture = ExtResource("11_dabdc")
@@ -416,9 +418,6 @@ sources/0 = SubResource("TileSetAtlasSource_pyn53")
 sources/1 = SubResource("TileSetAtlasSource_uwbj1")
 sources/2 = SubResource("TileSetAtlasSource_i1j6r")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dabdc"]
-size = Vector2(64, 64)
-
 [node name="Forest" type="Node2D"]
 
 [node name="MainTerrain" type="TileMapLayer" parent="."]
@@ -483,11 +482,11 @@ centered = false
 position = Vector2(80, 176)
 
 [node name="PlayerCamera" parent="." instance=ExtResource("9_0nboi")]
-position = Vector2(144, 240)
+position = Vector2(938, 129)
 process_callback = 0
 limit_left = -10
 limit_top = 0
-limit_right = 100000
+limit_right = 1000
 limit_bottom = 240
 limit_smoothed = true
 position_smoothing_enabled = true
@@ -500,8 +499,9 @@ tile_set = ExtResource("10_3knxq")
 tile_map_data = PackedByteArray("AAArAAgAAAAJAAMAAAAxAAgAAAAJAAMAAAA0AAoAAAAJAAMAAAAtAAYAAAAJAAMAAAAwAAUAAAAJAAMAAAApAAUAAAAJAAMAAAApAAoAAAAJAAMAAAArAAsAAAAJAAMAAAA0AAcAAAAJAAMAAAAxAAsAAgALAAoAAAAwAAoAAAARAAMAAAArAAoAAAARAAMAAAAsAAsAAgARAAgAAAAsAAoAAgARAAgAAAAsAAkAAgARAAgAAAAvAAsAAgASAAgAAAAvAAoAAgASAAgAAAAvAAkAAgASAAgAAAAsAAgAAgARAAgAAGAvAAgAAgARAAgAAGAtAAgAAgARAAgAAGAuAAgAAgARAAgAAGAtAAkAAgAUAAcAAAAuAAkAAgAUAAcAAAAtAAoAAgAPAAEAAAAuAAoAAgAPAAEAAAAuAAsAAgAPAAEAAAAtAAsAAgAPAAEAAAAwAAsAAgAKAAoAAAA=")
 tile_set = SubResource("TileSet_3akcx")
 
-[node name="ChangeScene" type="Area2D" parent="." groups=["change_level_zone"]]
+[node name="ChangeScene" parent="." instance=ExtResource("14_di0nb")]
 position = Vector2(736, 160)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ChangeScene"]
-shape = SubResource("RectangleShape2D_dabdc")
+[node name="EndZone" parent="." instance=ExtResource("15_pyn53")]
+position = Vector2(980, 160)
+next_level = "fim"
