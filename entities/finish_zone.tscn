@@ -1,11 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://demnye3e3fjtg"]
+[gd_scene load_steps=3 format=3 uid="uid://demnye3e3fjtg"]
+
+[ext_resource type="Script" uid="uid://bauhxv13kaxaq" path="res://scripts/finish_zone.gd" id="1_vax6v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g24r1"]
-size = Vector2(20, 208)
+size = Vector2(20, 23)
 
-[node name="FinishZone" type="Area2D"]
+[node name="FinishZone" type="Area2D" groups=["endzone"]]
+script = ExtResource("1_vax6v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 94)
+position = Vector2(0, 1.5)
 shape = SubResource("RectangleShape2D_g24r1")
 debug_color = Color(0.960784, 0.0235294, 0.564706, 0.419608)
